@@ -8,13 +8,15 @@ from tflearn.layers.estimator import regression
 from collections import Counter
 from statistics import mean, median
 
+# Variables definition for the network
 LR = 1e-3
 env = gym.make('CartPole-v0')
 env.reset()
 goal_steps = 500
 score_requirement = 50
-initial_games = 5000
+initial_games = 10000
 
+# test for the environment
 def some_random_games_first():
     for episode in range(5):
         env.reset()
@@ -24,8 +26,8 @@ def some_random_games_first():
             observation, reward, done, info  = env.step(action)
             if done:
                 break
-# some_random_games_first()
 
+# collecting the training data
 def initial_population():
     training_data = []
     scores = []
@@ -41,6 +43,7 @@ def initial_population():
             if len(prev_observation) > 0:
                 game_memory.append([prev_observation, action])
             prev_observation = observation
+            # giving 'reinforcement'
             score += reward
             if done:
                 break
@@ -64,6 +67,7 @@ def initial_population():
 
     return training_data
 
+# defining the model
 def neural_network_model(input_size):
     network = input_data(shape=[None, input_size, 1], name="input")
 
@@ -88,6 +92,7 @@ def neural_network_model(input_size):
     model = tflearn.DNN(network, tensorboard_dir='log')
     return model
 
+# training the NN model
 def train_model(training_data, model= False):
     X = np.array([i[0] for i in training_data]).reshape(-1, len(training_data[0][0]), 1)
     y = [i[1] for i in training_data]
@@ -104,6 +109,7 @@ model = train_model(training_data)
 scores = []
 choices = []
 
+# testing the model 
 for each_game in range(10):
     score = 0
     game_memory = []
