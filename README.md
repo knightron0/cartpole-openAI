@@ -1,8 +1,7 @@
-# Reinforcement Learning
-Reinforcement Learning using OpenAI's Gym. Game- CartPole
+# CartPole
+Teaching a machien to play the game CartPole using OpenAI's gym. Done using Reinforcement Learning.  
 
-# Setup
-1. Install gym, numpy, tflearn, tensorflow
+# Requirements
 
 ``` 
 pip install gym 
