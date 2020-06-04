@@ -1,5 +1,5 @@
 # CartPole
-Teaching a machien to play the game CartPole using OpenAI's gym. Done using Reinforcement Learning.  
+Teaching a machine to play the game CartPole using OpenAI's gym. Done using Reinforcement Learning.  
 
 # Requirements
 
